@@ -1,0 +1,4 @@
+---
+  - src: git@github.com:ottvladimir/minikube_role_ans.git
+    scm: git
+    name: minikube

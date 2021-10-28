@@ -1,0 +1,5 @@
+---
+- name: Install minikube
+  hosts: all
+  roles:
+    - minikube

@@ -1,0 +1,9 @@
+version: "3"
+volumes:
+   ansible_data:
+     external: false
+services:
+    minikube:
+        stdin_open: false
+        container_name: minikube
+        build: ./centos/
