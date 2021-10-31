@@ -4,3 +4,6 @@
       minikube:
         ansible_connection: ssh
         ansible_user: root
+      local:
+        ansible_connection: local
+        ansible_user: root
