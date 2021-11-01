@@ -5,12 +5,34 @@
 ## Задание 1: Запуск пода из образа в деплойменте
 Для начала следует разобраться с прямым запуском приложений из консоли. Такой подход поможет быстро развернуть инструменты отладки в кластере. Требуется запустить деплоймент на основе образа из hello world уже через deployment. Сразу стоит запустить 2 копии приложения (replicas=2). 
 
-Требования:
- * пример из hello world запущен в качестве deployment
- * количество реплик в deployment установлено в 2
- * наличие deployment можно проверить командой kubectl get deployment
- * наличие подов можно проверить командой kubectl get pods
 
+```
+$ kubectl create deployment hello-node --image=k8s.gcr.io/echoserver:1.4
+deployment.apps/hello-node created
+```
+```
+$ kubectl get deployments
+NAME         READY   UP-TO-DATE   AVAILABLE   AGE
+hello-node   1/1     1            1           53s
+```
+```
+$ kubectl edit deployment/hello-node
+```
+Ставим replicas=2
+```
+deployment.apps/hello-node edited
+```
+```
+$ kubectl get deployments
+NAME         READY   UP-TO-DATE   AVAILABLE   AGE
+hello-node   2/2     2            2           52m
+```
+```
+kubectl get pods
+NAME                          READY   STATUS    RESTARTS   AGE
+hello-node-7567d9fdc9-kxpgs   1/1     Running   0          57m
+hello-node-7567d9fdc9-x8g5v   1/1     Running   0          5m34s
+```
 
 ## Задание 2: Просмотр логов для разработки
 Разработчикам крайне важно получать обратную связь от штатно работающего приложения и, еще важнее, об ошибках в его работе. 
