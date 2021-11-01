@@ -71,3 +71,28 @@ $ minikube addons enable ingress
     ▪ Using image k8s.gcr.io/metrics-server/metrics-server:v0.4.2
 🌟  The 'metrics-server' addon is enabled
 ```
+Стартую Hello, minikube
+```bash
+$ kubectl create deployment hello-node --image=k8s.gcr.io/echoserver:1.4
+deployment.apps/hello-node created
+```
+```
+$ kubectl get deployments
+NAME         READY   UP-TO-DATE   AVAILABLE   AGE
+hello-node   1/1     1            1           53s
+$ kubectl get pods
+NAME                          READY   STATUS    RESTARTS   AGE
+hello-node-7567d9fdc9-kxpgs   1/1     Running   0          3m5s
+$ kubectl expose deployment hello-node --type=LoadBalancer --port=8080
+service/hello-node exposed
+$ kubectl get services
+NAME         TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
+hello-node   LoadBalancer   10.100.246.196   <pending>     8080:31060/TCP   9s
+kubernetes   ClusterIP      10.96.0.1        <none>        443/TCP          10m
+$ minikube service hello-node
+|-----------|------------|-------------|---------------------------|
+| NAMESPACE |    NAME    | TARGET PORT |            URL            |
+|-----------|------------|-------------|---------------------------|
+| default   | hello-node |        8080 | http://192.168.49.2:31060 |
+|-----------|------------|-------------|---------------------------|
+🎉  Opening service default/hello-node in default browser...
