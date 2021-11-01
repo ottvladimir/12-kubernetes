@@ -76,7 +76,7 @@ $ minikube addons enable ingress
 $ kubectl create deployment hello-node --image=k8s.gcr.io/echoserver:1.4
 deployment.apps/hello-node created
 ```
-```
+```bash
 $ kubectl get deployments
 NAME         READY   UP-TO-DATE   AVAILABLE   AGE
 hello-node   1/1     1            1           53s
@@ -96,3 +96,11 @@ $ minikube service hello-node
 | default   | hello-node |        8080 | http://192.168.49.2:31060 |
 |-----------|------------|-------------|---------------------------|
 🎉  Opening service default/hello-node in default browser...
+```
+Запущенный Hello, minikube
+
+![img](images/screen2.png)
+
+Запущенный dashboard
+
+![img](images/screen1.png)
