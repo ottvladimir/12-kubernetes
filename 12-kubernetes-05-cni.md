@@ -115,10 +115,10 @@ spec:
           port: 443
 ```
 ```bash
-$ kubectl exec curl-6c6f6b757-qrcsz -- curl -s backend                                            
-                                                                                                                                                                                                  
-$ kubectl exec curl-6c6f6b757-qrcsz -- curl -s cache                                              
-                                                                                                                                                                                                  
+$ kubectl exec curl-6c6f6b757-qrcsz -- curl -s backend -m 5
+command terminated with exit code 28                                          
+$ kubectl exec curl-6c6f6b757-qrcsz -- curl -s cache -m 5
+command terminated with exit code 28                                          
 $ kubectl exec curl-6c6f6b757-qrcsz -- curl -s frontend                                           
 Praqma Network MultiTool (with NGINX) - frontend-7f74b5fd7-7q8lx - 10.233.110.6     
 ```
